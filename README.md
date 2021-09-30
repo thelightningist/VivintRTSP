@@ -1,2 +1,2 @@
 # VivintRTSP
-This covers a detailed guide and sample configurations for deriving the RTSP streams of Vivint security cameras so that they can be used in other NVR solutions such as Frigate
+This covers a detailed guide and sample configurations for deriving the RTSP streams of Vivint security cameras so that they can be used in other NVR solutions such as Frigate. This guide assume HomeAssistant supervised installation of Frigate, but should work for any third party NVR implementation that relies on RTSP streams such as Frigate. It also requires some version HomeAssistant installed and the Vivint custom componets integration set up and configured appropriately (either manually or with HACS).
