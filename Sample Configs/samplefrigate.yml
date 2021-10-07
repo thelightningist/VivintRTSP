@@ -28,12 +28,13 @@ cameras:
         - path: rtsp://user:VIVINTPASSWORD@10.42.0.17:8554/Video-44_SD
           roles: 
           - detect
-        - path: rtsp://user:VIVINTPASSWORD@10.42.0.17:8554/Video-44
+       - path: rtsp://user:FEbPxjUN0e_Jeg0KV2ppEva@10.42.0.17:8554/Video-44
           roles: 
-          - clips
-    width: 720
-    height: 400
-    fps: 5
+          - record
+    detect:
+      width: 720
+      height: 400
+      fps: 5
     motion:
       mask:
         - 240,0,469,0,720,0,720,83,720,135,389,111,259,116,115,132,0,166,0,0
@@ -48,27 +49,12 @@ cameras:
           coordinates: 0,173,81,150,112,151,100,190,67,355,0,361
     rtmp:
       enabled: false
-    clips:
-      # Required: enables clips for the camera (default: shown below)
-      # This value can be set via MQTT and will be updated in startup based on retained value
-      enabled: True
-      # Optional: Number of seconds before the event to include in the clips (default: shown below)
-      pre_capture: 5
-      # Optional: Number of seconds after the event to include in the clips (default: shown below)
-      post_capture: 5
-      # Optional: Objects to save clips for. (default: all tracked objects)
-      objects:
-        - person
-        - car
-        - dog
-        - cat
-      # Optional: Camera override for retention settings (default: global values)
-      retain:
-        # Required: Default retention days (default: shown below)
-        default: 10
-        # Optional: Per object retention days
-        objects:
-          person: 15
+    record:
+      enabled: true
+      retain_days: 0
+      events:
+        retain:
+          default: 10
     # Optional: Configuration for the jpg snapshots written to the clips directory for each event
     snapshots:
       # Optional: Enable writing jpg snapshot to /media/frigate/clips (default: shown below)
@@ -83,12 +69,6 @@ cameras:
 #      # Optional: height to resize the snapshot to (default: original size)
 #      height: 175
       # Optional: Camera override for retention settings (default: global values)
-      retain:
-        # Required: Default retention days (default: shown below)
-        default: 10
-        # Optional: Per object retention days
-        objects:
-          person: 15
     objects:
       track:
         - person
