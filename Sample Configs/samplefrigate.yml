@@ -21,6 +21,7 @@ cameras:
   # Required: name of the camera
   driveway:
     ffmpeg:
+  # These are for RPi4's ONLY. Omit these if using different hardware and consult Frigate's documentation for the proper args for your processor
       hwaccel_args:
       - -c:v
       - h264_v4l2m2m
@@ -28,7 +29,7 @@ cameras:
         - path: rtsp://user:VIVINTPASSWORD@10.42.0.17:8554/Video-44_SD
           roles: 
           - detect
-       - path: rtsp://user:FEbPxjUN0e_Jeg0KV2ppEva@10.42.0.17:8554/Video-44
+       - path: rtsp://user:VIVINTPASSWORD@10.42.0.17:8554/Video-44
           roles: 
           - record
     detect:
