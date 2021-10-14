@@ -26,28 +26,17 @@ cameras:
       - -c:v
       - h264_v4l2m2m
       inputs:
-        - path: rtsp://user:VIVINTPASSWORD@10.42.0.17:8554/Video-44_SD
+      # Make sure you replace VIVINTPASSWORD with your own derived password
+        - path: rtsp://user:VIVINTPASSWORD@10.24.0.17:8554/Video-44_SD
           roles: 
           - detect
-       - path: rtsp://user:VIVINTPASSWORD@10.42.0.17:8554/Video-44
+       - path: rtsp://user:VIVINTPASSWORD@10.24.0.17:8554/Video-44
           roles: 
           - record
     detect:
       width: 720
       height: 400
       fps: 5
-    motion:
-      mask:
-        - 240,0,469,0,720,0,720,83,720,135,389,111,259,116,115,132,0,166,0,0
-    zones:
-      front_steps:
-          coordinates: 637,400,720,324,720,212,685,196,533,272
-      front_yard:
-          coordinates: 373,121,422,107,559,114,662,127,720,184,686,212,619,242,531,254
-      front_garage:
-          coordinates: 466,214,361,120,130,146,72,366,532,331
-      garage_yard:
-          coordinates: 0,173,81,150,112,151,100,190,67,355,0,361
     rtmp:
       enabled: false
     record:
@@ -73,7 +62,6 @@ cameras:
     objects:
       track:
         - person
-#        - car
 detectors:
   coral:
     type: edgetpu
