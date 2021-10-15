@@ -62,6 +62,48 @@ cameras:
     objects:
       track:
         - person
+   doorbell:
+    ffmpeg:
+      hwaccel_args:
+      - -c:v
+      - h264_v4l2m2m
+      inputs:
+        - path: rtsp://user:VIVINTPASSWORD@10.42.0.17:8554/Video-42_SD
+          roles: 
+          - detect
+        - path: rtsp://user:VIVINTPASSWORD@10.42.0.17:8554/Video-42
+          roles: 
+          - record
+    detect:
+      width: 512
+      height: 512
+      fps: 5
+    motion:
+      mask:
+        - 512,281,58,302,58,239,451,245,512,237
+    rtmp:
+      enabled: false
+    record:
+      enabled: true
+      retain_days: 0
+      events:
+        retain:
+          default: 10
+    objects:
+      track:
+        - person
+        #   - car
+        #   - dog
+        #   - cat
+        # Optional: Configuration for the jpg snapshots written to the clips directory for each event
+    snapshots:
+      enabled: true
+          # Optional: print a timestamp on the snapshots (default: shown below)
+      timestamp: true
+          # Optional: draw bounding box on the snapshots (default: shown below)
+      bounding_box: false
+          # Optional: crop the snapshot (default: shown below)
+      crop: False
 detectors:
   coral:
     type: edgetpu
